@@ -172,12 +172,15 @@ const Produk = () => {
                           <span className="price">Rp.{prod.harga}</span>
                         </div>
                         <div>
-                          {/* <Link href="/admin/produk/detail" className="btn btn-primary btn-sm">Detail</Link> */}
+                          <Link to={`/admin/editproduk/${prod.id}`} className="btn btn-success btn-sm">Edit</Link>
                           <Link
-                            href="/admin/produk/editproduk"
-                            className="btn btn-success btn-sm mr-1"
+                            to={{patname: `/admin/editproduk/${prod.id}`, state: {
+                              nama: prod.nama_produk, harga: prod.harga, kd_produk: prod.kd_produk
+                            }}}
                           >
-                            Edit
+                            <button className="btn btn-success btn-sm mr-1">
+                              Edit State
+                            </button> 
                           </Link>
                           <button
                             className="btn btn-primary btn-sm"

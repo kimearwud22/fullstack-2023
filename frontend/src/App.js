@@ -5,6 +5,7 @@ import Admin from "../src/admin/index"
 import Produk from "../src/admin/produk"
 import Testimoni from "../src/admin/testimoni"
 import Pelanggan from "../src/admin/pelanggan"
+import EditProduk from "../src/admin/editproduk"
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/admin/produkall" element={<Produk/>}/>
           <Route path="/admin/testiall" element={<Testimoni/>}/>
           <Route path="/admin/pelanggan" element={<Pelanggan/>}/>
+          <Route path="/admin/editproduk" element={<EditProduk/>}/>
         </Routes>
       </Router>
     </div>
