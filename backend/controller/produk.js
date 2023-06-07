@@ -38,3 +38,30 @@ exports.postproduk = (req, res) => {
     }
     );
 }
+
+//put produk
+exports.putproduk = (req, res) => {
+    const produkId = req.params.id;
+    const {kd_produk, nama_produk, harga} = req.body;
+    const sql = `UPDATE produk SET kd_produk = '${kd_produk}', nama_produk = '${nama_produk}', harga = '${harga}' WHERE id = ${produkId}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.status(200).json({
+            message: 'Data put produk',
+            data: result
+        });
+    });
+}
+
+//delete produk
+exports.deleteproduk = (req, res) => {
+    const produkId = req.params.id;
+    const sql = `DELETE FROM produk WHERE id = ${produkId}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.status(200).json({
+            message: 'Data delete produk',
+            data: result
+        });
+    });
+}

@@ -37,3 +37,43 @@ exports.gettestimonimultiple = (req, res) => {
     }
     );
 }
+
+//post data testimoni
+exports.posttestimoni = (req, res) => {
+    const { id_pelanggan, judul, isi } = req.body;
+    const sql = `INSERT INTO testimoni (id_pelanggan, judul, isi) VALUES ('${id_pelanggan}', '${judul}', '${isi}')`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.status(201).json({
+            message: 'Data post testimoni',
+            data: result
+        });
+    });
+}
+
+//put data testimoni
+exports.puttestimoni = (req, res) => {
+    const testimoniId = req.params.id;
+    const { id_pelanggan, judul, isi } = req.body;
+    const sql = `UPDATE testimoni SET id_pelanggan = '${id_pelanggan}', judul = '${judul}', isi = '${isi}' WHERE id = ${testimoniId}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.status(200).json({
+            message: 'Data put testimoni',
+            data: result
+        });
+    });
+}
+
+//delete data testimoni
+exports.deletetestimoni = (req, res) => {
+    const testimoniId = req.params.id;
+    const sql = `DELETE FROM testimoni WHERE id = ${testimoniId}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.status(200).json({
+            message: 'Data delete testimoni',
+            data: result
+        });
+    });
+}

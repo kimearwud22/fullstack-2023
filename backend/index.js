@@ -4,14 +4,14 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const routerPelanggan = require('./router/pelanggan');
-// const routerAdmin = require('./router/admin');
+const routerAdmin = require('./router/admin');
 const routerTestimoni = require('./router/testimoni');
 const routerProduk = require('./router/produk')
 
 app.use(express.json());
 app.use(cors());
 app.use('/api', routerPelanggan);
-// app.use('/api', routerAdmin);
+app.use('/api', routerAdmin);
 app.use('/api', routerTestimoni);
 app.use('/api', routerProduk);
 
