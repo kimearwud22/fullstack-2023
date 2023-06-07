@@ -1,11 +1,14 @@
 import React from 'react'
 import Layout from '../component/admin/Layout'
+import Admin from '../component/admin/AllAdmin'
 
 export default function index() {
   return (
     <div>
         <Layout>
-           <h1>ini admin</h1> 
+           <div className="container">
+           <Admin/>
+           </div> 
         </Layout>
     </div>
   )

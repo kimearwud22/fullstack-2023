@@ -2,7 +2,9 @@
 // import './App.css';
 import Home from "./Home"
 import Admin from "../src/admin/index"
-import AdminProduk from "../src/admin/produk"
+import Produk from "../src/admin/produk"
+import Testimoni from "../src/admin/testimoni"
+import Pelanggan from "../src/admin/pelanggan"
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -12,7 +14,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/admin" element={<Admin/>}/>
-          <Route path="/admin/produk" element={<AdminProduk/>}/>
+          <Route path="/admin/produkall" element={<Produk/>}/>
+          <Route path="/admin/testiall" element={<Testimoni/>}/>
+          <Route path="/admin/pelanggan" element={<Pelanggan/>}/>
         </Routes>
       </Router>
     </div>

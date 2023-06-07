@@ -1,6 +1,39 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 const Body = () => {
+  const [data, setData] = useState([]);
+    const [alamat, setAlamat] = useState('');
+    const [nama, setNama] = useState('');
+    const [nohp, setNohp] = useState('');
+    const [durasi, setDurasi] = useState('');
+    const [keterangan, setKeterangan] = useState('');
+
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      const data = {
+          nama: nama,
+          alamat: alamat,
+          nohp: nohp,
+          durasi: durasi,
+          keterangan: keterangan
+      }
+      console.log(data);
+      try{
+          const res = await axios.post('http://localhost:3002/api/pelanggan', data);
+          console.log(res);
+          alert('Order berhasil ditambahkan');
+          window.location.reload('/');
+          setNama('');
+          setAlamat('');
+          setNohp('');
+          setDurasi('');
+          setKeterangan('');
+      }catch(error){
+          console.log(error);
+      }
+  }
   return (
     <div>
       <div>
@@ -44,6 +77,7 @@ const Body = () => {
           style={{ padding: 35 }}
         >
           <div className="container">
+            <form onSubmit={handleSubmit}>
             <div className="row g-2">
               <div className="col-md-10">
                 <div className="row g-2">
@@ -52,6 +86,8 @@ const Body = () => {
                       type="text"
                       className="form-control border-0 py-3"
                       placeholder="Nama"
+                      value={nama}
+                      onChange={(e) => setNama(e.target.value)}
                     />
                   </div>
                   <div className="col-md-4">
@@ -59,6 +95,8 @@ const Body = () => {
                       type="text"
                       className="form-control border-0 py-3"
                       placeholder="Alamat"
+                      value={alamat}
+                      onChange={(e) => setAlamat(e.target.value)}
                     />
                   </div>
                   <div className="col-md-4">
@@ -66,32 +104,43 @@ const Body = () => {
                       type="text"
                       className="form-control border-0 py-3"
                       placeholder="Nomor Telephone"
+                      value={nohp}
+                      onChange={(e) => setNohp(e.target.value)}
                     />
                   </div>
                   <div className="col-md-4">
-                    <select className="form-select border-0 py-1">
-                      <option selected>Pilih Produk</option>
+                    {/* <select className="form-select border-0 py-1">
+                      <option selected>Pilih Durasi</option>
                       <option value={1}>Property Type 1</option>
                       <option value={2}>Property Type 2</option>
                       <option value={3}>Property Type 3</option>
-                    </select>
+                    </select> */}
+                    <input
+                      type="text"
+                      className="form-control border-0 py-3"
+                      placeholder="Durasi"
+                      value={durasi}
+                        onChange={(e) => setDurasi(e.target.value)}
+                    />
                   </div>
-                  {/* <div className="col-md-4">
-                    <select className="form-select border-0 py-3">
-                      <option selected>Location</option>
-                      <option value={1}>Location 1</option>
-                      <option value={2}>Location 2</option>
-                      <option value={3}>Location 3</option>
-                    </select>
-                  </div> */}
+                  <div className="col-md-4">
+                    <input
+                      type="text"
+                      className="form-control border-0 py-3"
+                      placeholder="Keterangan"
+                      value={keterangan}
+                        onChange={(e) => setKeterangan(e.target.value)}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="col-md-2">
-                <button className="btn btn-dark border-0 w-100 py-3">
-                  Search
+                <button className="btn btn-dark border-0 w-100 py-3" type="submit">
+                  Booking
                 </button>
               </div>
             </div>
+            </form>
           </div>
         </div>
         {/* Search End */}
