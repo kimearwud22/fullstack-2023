@@ -1,5 +1,6 @@
 import Head from "next/head";
 import "../styles/style.scss";
+import "../styles/index.css";
 
 import '../styles/layout/style.css'
 import "bootstrap/dist/css/bootstrap.css"
