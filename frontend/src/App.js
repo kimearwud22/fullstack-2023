@@ -6,6 +6,7 @@ import Produk from "../src/admin/produk"
 import Testimoni from "../src/admin/testimoni"
 import Pelanggan from "../src/admin/pelanggan"
 import EditProduk from "../src/admin/editproduk"
+import EditAdmin from "../src/component/admin/EditAdmin"
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/admin/testiall" element={<Testimoni/>}/>
           <Route path="/admin/pelanggan" element={<Pelanggan/>}/>
           <Route path="/admin/editproduk" element={<EditProduk/>}/>
+          <Route path="/admin/editadmin" element={<EditAdmin/>}/>
         </Routes>
       </Router>
     </div>

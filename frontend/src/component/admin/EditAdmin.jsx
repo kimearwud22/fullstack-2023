@@ -4,18 +4,17 @@ import { useParams } from "react-router-dom";
 
 export default function EditProduk() {
     const {id} = useParams();
-    // const [data, setData] = useState([])
-    const [nama_produk, setNamaProduk] = useState("");
-    const [kd_produk, setKdProduk] = useState("");
-    const [harga, setHarga] = useState("");
+    const [nama, setNama] = useState([]);
+    const [username, setUsername] = useState([]);
+    const [password, setPassword] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3002/api/produk/${id}`);
-                setKdProduk(response.data[0].kd_produk)
-                setNamaProduk(response.data[0].nama_produk)
-                setHarga(response.data[0].harga)
+                const response = await axios.get(`http://localhost:3002/api/admin/${id}`);
+                setUsername(response.data[0].username)
+                setNama(response.data[0].nama)
+                setPassword(response.data[0].password)
             } catch (error) {
                 console.log(error)
             }
@@ -24,21 +23,21 @@ export default function EditProduk() {
     }, [id])
 
     useEffect(() => {
-      document.title = `Update Produk ${nama_produk}`;
-    },[nama_produk])
+      document.title = `Update Admin ${nama}`;
+    },[nama])
 
     const handleSubmit = async (e)=> {
         e.preventDefault();
-        const updateProduk = {
-            kd_produk: kd_produk,
-            nama_produk: nama_produk,
-            harga: harga
+        const updateAdmin = {
+            username: username,
+            nama: nama,
+            password: password
         };
 
         try {
-            const response = await axios.put(`http://localhost:3002/api/produk/${id}`, updateProduk);
+            const response = await axios.put(`http://localhost:3002/api/admin/${id}`, updateAdmin);
             console.log(response.data);
-            window.location= '/admin/produk'
+            window.location= '/admin'
         } catch (error) {
             console.log(error);
         }
@@ -46,12 +45,12 @@ export default function EditProduk() {
 
   return (
     <div>
-      <h2>Update Produk {nama_produk}</h2>
+      <h2>Update Admin {nama}</h2>
         <div className="card card-primary ">
         <div className="card-body">
           <div className="col-12">
             <div className="">
-              <h2>Update Product</h2>
+              <h2>Update Admin</h2>
             </div>
           </div>
           <form onSubmit={handleSubmit}>
@@ -84,8 +83,8 @@ export default function EditProduk() {
                         type="text"
                         className="form-control form-control-sm"
                         placeholder="Nama Produk"
-                        value={kd_produk}
-                        onChange={(e) => setKdProduk(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                       />
                     </div>
                     <div className="form-group col-sm-6">
@@ -94,12 +93,12 @@ export default function EditProduk() {
                         type="text"
                         className="form-control form-control-sm"
                         placeholder="Nama Produk"
-                        value={nama_produk}
-                        onChange={(e) => setNamaProduk(e.target.value)}
+                        value={nama}
+                        onChange={(e) => setNama(e.target.value)}
                       />
                     </div>
                     <div className="form-group col-sm-6">
-                      <label>Harga</label>
+                      <label>password</label>
                       <div className="input-group input-group-sm">
                         <div className="input-group-prepend">
                           <span className="form-control form-control-sm text-dark">
@@ -110,9 +109,9 @@ export default function EditProduk() {
                           type="text"
                           className="form-control form-control-sm"
                           aria-label="Rupiah"
-                          placeholder="Harga Produk"
-                            value={harga}
-                            onChange={(e) => setHarga(e.target.value)}
+                          placeholder="password Produk"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                         <div className="input-group-append">
                           <span className="form-control form-control-sm text-dark">

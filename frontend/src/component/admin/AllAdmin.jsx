@@ -68,11 +68,11 @@ const Pelanggan = () => {
                               <td>{pelanggan.password}</td>
                               <td>
                                 <Link
-                                  href="/admin/pemesanan/detail"
+                                  to={`/admin/editadmin/${pelanggan.id}`}
                                   className="btn btn-primary mr-1 rounded text-white"
                                 >
                                   <i className="far fa-eye mr-1" />
-                                  Detail
+                                  Edit
                                 </Link>
                                 <button
                                   className="btn btn-danger mr-1 rounded text-white"

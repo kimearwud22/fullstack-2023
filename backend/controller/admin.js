@@ -14,12 +14,11 @@ exports.getadmin = (req, res) => {
 //get data admin by id
 exports.getadminbyid = (req, res) => {
     const adminId = req.params.id;
-    const sql = `SELECT * FROM admin WHERE id = ${adminId}`;
-    db.query(sql, (err, result) => {
+    db.query(`SELECT * FROM admin WHERE id = ${adminId}`, (err, rows) => {
         if (err) throw err;
         res.status(200).json({
             message: 'Data get admin by id',
-            data: result
+            data: rows
         });
     });
 }
@@ -40,10 +39,9 @@ exports.postadmin = (req, res) => {
 
 //put data admin
 exports.putadmin = (req, res) => {
-    const adminId = req.params.id;
+    const {id} = req.params;
     const { nama, username, password } = req.body;
-    const sql = `UPDATE admin SET nama = '${nama}', username = '${username}', password = '${password}' WHERE id = ${adminId}`;
-    db.query(sql, (err, result) => {
+    db.query(`UPDATE admin SET nama = '${nama}', username = '${username}', password = '${password}' WHERE id = ${id}`, (err, result) => {
         if (err) throw err;
         res.status(200).json({
             message: 'Data put admin',
