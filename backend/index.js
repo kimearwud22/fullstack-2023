@@ -7,13 +7,24 @@ const routerPelanggan = require('./router/pelanggan');
 const routerAdmin = require('./router/admin');
 const routerTestimoni = require('./router/testimoni');
 const routerProduk = require('./router/produk')
+const routerLogin = require('./router/login')
 
+//authentication
+const session = require('express-session');
+
+
+app.use(session({
+    secret: 'ayinapp',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(express.json());
 app.use(cors());
 app.use('/api', routerPelanggan);
 app.use('/api', routerAdmin);
 app.use('/api', routerTestimoni);
 app.use('/api', routerProduk);
+app.use('/api', routerLogin);
 
 app.listen('3002', () => {
     console.log('Server started on port 3002');
