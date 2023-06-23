@@ -1,7 +1,7 @@
 //input and tampilan produk
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Produk = () => {
   const [data, setData] = useState([]);
@@ -30,30 +30,20 @@ const Produk = () => {
     }
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:3002/api/produk")
-      .then((res) => {
-        setData(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:3002/api/produk/${id}`)
-      .then((res) => {
-        console.log(res);
-        alert("Produk berhasil dihapus");
-        window.location.reload();
-        setData(data.filter((item) => item._id !== id));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const handleDelete = (id) => {
+  //   axios
+  //     .delete(`http://localhost:3002/api/produk/${id}`)
+  //     .then((res) => {
+  //       console.log(res);
+  //       alert("Produk berhasil dihapus");
+  //       window.location.reload();
+  //       setData(data.filter((item) => item._id !== id));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <div className="container-fluid">
@@ -68,25 +58,6 @@ const Produk = () => {
             </div>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="author-box-left">
-              {/* <img
-                src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                className="m-2 author-box-picture"
-                style={{ width: "150px", height: "150px" }}
-              /> */}
-              <div className="clearfix" />
-              <div className="custom-file w-50 h-50 mb-3">
-                <input
-                  type="file"
-                  className="custom-file-input form-control-sm"
-                  id="customFile"
-                  //   onChange={handleImgChangge}
-                />
-                <label className="custom-file-label" htmlFor="customFile">
-                  Choose file
-                </label>
-              </div>
-            </div>
             <div className="author-box-details">
               <div className="author-box-name">
                 <div className="form-group">
@@ -146,70 +117,6 @@ const Produk = () => {
               </div>
             </div>
           </form>
-        </div>
-      </div>
-      <div>
-        <div className="card author-box card-primary mt-2">
-          <div className="card-body">
-            <div className="colorlib-product">
-              <div className="container">
-                <div className="row">
-                  <div className="col-sm-8 offset-sm-2 text-center colorlib-heading">
-                    <h2>All Produk</h2>
-                    <hr className="sidebar-divider" />
-                  </div>
-                </div>
-                <div className="row row-pb-md">
-                  {data.length > 0 ? (
-                    data.map((prod, index) => (
-                      <div className="col-lg-3 mb-4 text-center" key={index}>
-                        <div className="product-entry border">
-                          <div className="desc">
-                            <h2>{prod.kd_produk}</h2>
-                            <p>
-                              <span className="price">{prod.nama_produk}</span>
-                            </p>
-                            <span className="price">Rp.{prod.harga}</span>
-                          </div>
-                          <div>
-                            <Link
-                              to={`/admin/editproduk/id=${prod.id}`}
-                              className="btn btn-success btn-sm"
-                            >
-                              Edit
-                            </Link>
-                            <Link
-                              to={{
-                                pathname: `/admin/editproduk/id=${prod.id}`,
-                                state: {
-                                  nama: prod.nama_produk,
-                                  harga: prod.harga,
-                                  kd_produk: prod.kd_produk,
-                                },
-                              }}
-                            >
-                              <button className="btn btn-success btn-sm mr-1">
-                                Edit State
-                              </button>
-                            </Link>
-                            <button
-                              className="btn btn-primary btn-sm"
-                              onClick={() => handleDelete(prod.id)}
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <h3 className="text-center">Belum ada produk</h3>
-                  )}
-                  <div className="w-100" />
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

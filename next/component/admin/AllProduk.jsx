@@ -17,6 +17,21 @@ const AllProduk = () => {
       });
   }, []);
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`http://localhost:3002/api/produk/${id}`)
+      .then((res) => {
+        console.log(res);
+        alert("Produk berhasil dihapus");
+        window.location.reload();
+        setData(data.filter((item) => item._id !== id));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
   return (
     <div className="container-fluid">
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
@@ -44,6 +59,33 @@ const AllProduk = () => {
                               <span className="price">{prod.nama_produk}</span>
                             </p>
                             <span className="price">Rp.{prod.harga}</span>
+                          </div>
+                          <div>
+                            <Link href={`/admin/editProduk?id=${prod.id}&kd_produk=${prod.kd_produk}&nama=${prod.nama_produk}&harga=${prod.harga}`}
+                              className="btn btn-danger mr-2"
+                            >
+                              Edit
+                            </Link>
+                            {/* <Link
+                              to={{
+                                pathname: `/admin/editproduk/id=${prod.id}`,
+                                state: {
+                                  nama: prod.nama_produk,
+                                  harga: prod.harga,
+                                  kd_produk: prod.kd_produk,
+                                },
+                              }}
+                            >
+                              <button className="btn btn-success btn-sm mr-1">
+                                Edit State
+                              </button>
+                            </Link> */}
+                            <button
+                              className="btn btn-primary btn-sm ml-2"
+                              onClick={() => handleDelete(prod.id)}
+                            >
+                              Delete
+                            </button>
                           </div>
                         </div>
                       </div>

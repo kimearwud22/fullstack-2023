@@ -1,4 +1,4 @@
-import LogoDark from "../../assets/images/logos/logopertamina2.svg";
+import LogoDark from "../../../public/img/icon-deal.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <Link href="/">
       <a>
-        <Image src={LogoDark} alt="logo" />
+        <Image src={LogoDark} alt="logo" /> <h4>Studio-Mu</h4>
       </a>
     </Link>
   );

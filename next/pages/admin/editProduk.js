@@ -1,17 +1,15 @@
 import React from 'react';
 // import DataPelanggan from '../../component/DataPelanggan'
-import TableProduk from '../../component/admin/Produk'
-import AllProduk from '../../component/admin/AllProduk'
+import EditProduk from '../../component/admin/EditProduk'
 import FullLayout from '../../src/layouts/FullLayout';
 
-function dataproduk({ produks }) {
+function editproduk({ produks }) {
 
     return (
         <FullLayout>
             <div>
                 <div className="container">
-                    <TableProduk />
-                    <AllProduk/>
+                    <EditProduk />
                 </div>
             </div>
         </FullLayout>
@@ -19,4 +17,4 @@ function dataproduk({ produks }) {
 }
 
 
-export default dataproduk;
+export default editproduk;

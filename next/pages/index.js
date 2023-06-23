@@ -12,7 +12,7 @@ import Footer from "../component/user/Footer";
 
 
 export default function Home() {
-
+  
   return (
     <>
       <div >

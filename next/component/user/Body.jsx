@@ -42,13 +42,11 @@ const Body = () => {
           <div className="row g-0 align-items-center flex-column-reverse flex-md-row">
             <div className="col-md-6 p-5 mt-lg-5">
               <h1 className="display-5 animated fadeIn mb-4">
-                Find A <span className="text-primary">Perfect Home</span> To
-                Live With Your Family
+                Datang<span className="text-primary"> Ke Studio-Mu</span> To
+                Dan Nikmati Hasil Fotonya
               </h1>
               <p className="animated fadeIn mb-4 pb-2">
-                Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam
-                no. Kasd rebum ipsum et diam justo clita et kasd rebum sea
-                elitr.
+                Studio-Mu merupakan tempat yang tepat untuk mengabadikan moment anda dengan hasil pemotretan yang profesional dengan menggunakan alat yang canggih dan request sesuai pesanan.
               </p>
               <a
                 href
@@ -70,7 +68,7 @@ const Body = () => {
           </div>
         </div>
         {/* Header End */}
-        {/* Search Start */}
+        <div id="booking">
         <div
           className="container-fluid bg-primary mb-5 wow fadeIn"
           data-wow-delay="0.1s"
@@ -143,8 +141,9 @@ const Body = () => {
             </form>
           </div>
         </div>
-        {/* Search End */}
+        </div>
         {/* Category Start */}
+        <div id="type">
         <div className="container-xxl py-5">
           <div className="container">
             <div
@@ -152,7 +151,7 @@ const Body = () => {
               data-wow-delay="0.1s"
               style={{ maxWidth: 600 }}
             >
-              <h1 className="mb-3">Property Types</h1>
+              <h1 className="mb-3">Fotografer Types</h1>
               <p>
                 Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut
                 dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo
@@ -176,7 +175,7 @@ const Body = () => {
                         alt="Icon"
                       />
                     </div>
-                    <h6>Apartment</h6>
+                    <h6>Dalam Ruangan</h6>
                     <span>123 Properties</span>
                   </div>
                 </a>
@@ -218,7 +217,7 @@ const Body = () => {
                         alt="Icon"
                       />
                     </div>
-                    <h6>Home</h6>
+                    <h6>Tema Uang</h6>
                     <span>123 Properties</span>
                   </div>
                 </a>
@@ -239,7 +238,7 @@ const Body = () => {
                         alt="Icon"
                       />
                     </div>
-                    <h6>Office</h6>
+                    <h6>Dalam Kantor</h6>
                     <span>123 Properties</span>
                   </div>
                 </a>
@@ -260,7 +259,7 @@ const Body = () => {
                         alt="Icon"
                       />
                     </div>
-                    <h6>Building</h6>
+                    <h6>Luar Ruangan</h6>
                     <span>123 Properties</span>
                   </div>
                 </a>
@@ -281,7 +280,7 @@ const Body = () => {
                         alt="Icon"
                       />
                     </div>
-                    <h6>Townhouse</h6>
+                    <h6>Self Studio</h6>
                     <span>123 Properties</span>
                   </div>
                 </a>
@@ -302,7 +301,7 @@ const Body = () => {
                         alt="Icon"
                       />
                     </div>
-                    <h6>Shop</h6>
+                    <h6>Foto Panggilan</h6>
                     <span>123 Properties</span>
                   </div>
                 </a>
@@ -323,13 +322,14 @@ const Body = () => {
                         alt="Icon"
                       />
                     </div>
-                    <h6>Garage</h6>
+                    <h6>Prewed</h6>
                     <span>123 Properties</span>
                   </div>
                 </a>
               </div>
             </div>
           </div>
+        </div>
         </div>
         {/* Category End */}
         {/* About Start */}

@@ -6,17 +6,17 @@ import { useRouter } from "next/router";
 const navigation = [
   {
     title: "Dashboard",
-    href: "/admin/das",
+    href: "/admin",
     icon: "bi bi-speedometer2",
   },
-  // {
-  //   title: "Cards",
-  //   href: "/admin/cards",
-  //   icon: "bi bi-card-text",
-  // },
+  {
+    title: "Testimoni",
+    href: "/admin/testimoni",
+    icon: "bi bi-card-text",
+  },
   {
     title: "Table Produk",
-    href: "/admin/card_produck",
+    href: "/admin/produks",
     icon: "bi bi-layout-split",
   },
   {

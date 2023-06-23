@@ -1,26 +1,29 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios';
-import { useParams } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export default function EditProduk() {
-    const {id} = useParams();
-    // const [data, setData] = useState([])
+    const [data, setData] = useState([]);
     const [nama_produk, setNamaProduk] = useState("");
     const [kd_produk, setKdProduk] = useState("");
     const [harga, setHarga] = useState("");
+    const router = useRouter();
+    const {id} = router.query;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`http://localhost:3002/api/produk/${id}`);
-                setKdProduk(response.data[0].kd_produk)
-                setNamaProduk(response.data[0].nama_produk)
-                setHarga(response.data[0].harga)
+                const json = await response.json();
+                setData(json.data);
+                setNamaProduk(json.data.nama_produk);
+                setKdProduk(json.data.kd_produk);
+                setHarga(json.data.harga);
             } catch (error) {
                 console.log(error)
             }
         };
-        fetchData();
+       fetchData();
     }, [id])
 
     useEffect(() => {
@@ -38,7 +41,7 @@ export default function EditProduk() {
         try {
             const response = await axios.put(`http://localhost:3002/api/produk/${id}`, updateProduk);
             console.log(response.data);
-            window.location= '/admin/produk'
+            window.location= '/admin/produks'
         } catch (error) {
             console.log(error);
         }
@@ -55,25 +58,6 @@ export default function EditProduk() {
             </div>
           </div>
           <form onSubmit={handleSubmit}>
-            <div className="author-box-left">
-              {/* <img
-                src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                className="m-2 author-box-picture"
-                style={{ width: "150px", height: "150px" }}
-              /> */}
-              <div className="clearfix" />
-              <div className="custom-file w-50 h-50 mb-3">
-                <input
-                  type="file"
-                  className="custom-file-input form-control-sm"
-                  id="customFile"
-                  //   onChange={handleImgChangge}
-                />
-                <label className="custom-file-label" htmlFor="customFile">
-                  Choose file
-                </label>
-              </div>
-            </div>
             <div className="author-box-details">
               <div className="author-box-name">
                 <div className="form-group">
