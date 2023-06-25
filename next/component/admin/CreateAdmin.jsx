@@ -1,51 +1,49 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
-import { useRouter } from "next/router";
+//input and tampilan produk
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Link from "next/link";
 
-export default function EditAdmin() {
-    const [nama, setNama] = useState([]);
-    const [username, setUsername] = useState([]);
-    const [password, setPassword] = useState([]);
-    const router = useRouter()
-    const {id} = router.query;
+const Admin = () => {
+  const [data, setData] = useState([]);
+  const [username, setUsername] = useState("");
+  const [nama, setNama] = useState("");
+  const [password, setPassword] = useState("");
 
-    useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const response = await axios.get(`http://localhost:3002/api/admin/${id}`);
-              const json = await response.json();
-              setData(json.data);
-              setNama(json.data.nama);
-              setUsername(json.data.username);
-              setPassword(json.data.password);
-          } catch (error) {
-              console.log(error)
-          }
-      };
-     fetchData();
-  }, [id])
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const data = {
+      username: username,
+      nama: nama,
+      password: password,
+    };
+    console.log(data);
+    try {
+      const res = await axios.post("http://localhost:3002/api/admin", data);
+      console.log(res);
+      alert("Admin berhasil ditambahkan");
+      window.location.reload();
+      setUsername("");
+      setNama("");
+      setPassword("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  useEffect(() => {
-    document.title = `Update Produk ${nama}`;
-  },[nama])
 
-  const handleSubmit = async (e)=> {
-      e.preventDefault();
-      const updateAdmin = {
-          nama: nama,
-          username: username,
-          password: password
-      };
-
-      try {
-          const response = await axios.put(`http://localhost:3002/api/admin/${id}`, updateAdmin);
-          console.log(response.data);
-          alert('admin berhasil diupdate')
-          window.location= '/admin'
-      } catch (error) {
-          console.log(error);
-      }
-  }
+  // const handleDelete = (id) => {
+  //   axios
+  //     .delete(`http://localhost:3002/api/produk/${id}`)
+  //     .then((res) => {
+  //       console.log(res);
+  //       alert("Produk berhasil dihapus");
+  //       window.location.reload();
+  //       setData(data.filter((item) => item._id !== id));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     <div className="container-fluid">
@@ -53,7 +51,7 @@ export default function EditAdmin() {
         <div className="card-body">
           <div className="col-12">
             <div className="">
-              <h2>Update Admin</h2>
+              <h2>Tambahkan Admin</h2>
             </div>
           </div>
           <form onSubmit={handleSubmit}>
@@ -92,6 +90,11 @@ export default function EditAdmin() {
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                         />
+                        <div className="input-group-append">
+                          <span className="form-control form-control-sm text-dark">
+                            .00
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -109,5 +112,7 @@ export default function EditAdmin() {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Admin;

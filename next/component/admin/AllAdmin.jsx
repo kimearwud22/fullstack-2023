@@ -64,12 +64,14 @@ const AllAdmin = () => {
                               <td>{pelanggan.username}</td>
                               <td>{pelanggan.password}</td>
                               <td>
-                                {/* <Link href="/" className="btn btn-primary mr-1 rounded text-white">
-                                  <i className="far fa-eye mr-1" />
-                                  Edit
-                                </Link> */}
+                              <button className='btn btn-success mr-3 rounded text-white'>
+                              <Link href={`/admin/editAdmin?id=${pelanggan.id}&username=${pelanggan.username}&nama=${pelanggan.nama}&passwrod=${pelanggan.password}`}
+                            >
+                              Edit
+                            </Link>
+                              </button>
                                 <button
-                                  className="btn btn-danger mr-1 rounded text-white"
+                                  className="btn btn-danger ml-3 rounded text-white"
                                   onClick={() => handleDelete(pelanggan.id)}
                                 >
                                   <i className="far fa-edit mr-1" />

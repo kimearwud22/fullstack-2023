@@ -61,11 +61,13 @@ const AllProduk = () => {
                             <span className="price">Rp.{prod.harga}</span>
                           </div>
                           <div>
+                            <button className="btn btn-danger btn-sm">
                             <Link href={`/admin/editProduk?id=${prod.id}&kd_produk=${prod.kd_produk}&nama=${prod.nama_produk}&harga=${prod.harga}`}
                               className="btn btn-danger mr-2"
                             >
                               Edit
                             </Link>
+                            </button>
                             {/* <Link
                               to={{
                                 pathname: `/admin/editproduk/id=${prod.id}`,

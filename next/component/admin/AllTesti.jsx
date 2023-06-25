@@ -44,7 +44,7 @@ const AllTestimoni = () => {
                 <h2>Tabel Testimoni pelanggan</h2>
               </div>
             </div>
-            <div class="container">
+            <div className="container">
               <div>
                 <div className="row">
                   <div className="col-12">
