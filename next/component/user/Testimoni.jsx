@@ -80,7 +80,7 @@ const Testimoni = () => {
                               {item.nama}
                             </option>
                           ))}
-                        </select>
+                        </select> 
                       </div>
                       <div className="col-md-4">
                         <input

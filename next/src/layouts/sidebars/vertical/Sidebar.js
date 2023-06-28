@@ -2,6 +2,7 @@ import { Button, Nav, NavItem } from "reactstrap";
 import Logo from "../../logo/Logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 const navigation = [
   {
@@ -26,6 +27,16 @@ const navigation = [
   },
   
 ];
+
+const hanldeLogout = (e) => {
+  e.preventDefault();
+  alert("Logout");
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("username");
+  localStorage.removeItem("id");
+
+  window.location.href = "/";
+};
 
 const Sidebar = ({ showMobilemenu }) => {
   let curl = useRouter();
@@ -64,7 +75,7 @@ const Sidebar = ({ showMobilemenu }) => {
             color="danger"
             tag="a"
             className="mt-3"
-            href="/"
+            onClick={hanldeLogout}
           >
             Exit
           </Button>
